@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Signin Template for Bootstrap</title>
+		<!-- Bootstrap core CSS -->
+		<!--<link href="/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">-->
+		<!--&lt;!&ndash; Custom styles for this template &ndash;&gt;-->
+		<!--<link href="/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet">-->
+		<link rel="stylesheet" href="/css/bootstrap.min.css" >
+		<link rel="stylesheet" href="/css/bootstrap-theme.css" >
+		<link rel="stylesheet" href="/css/signin.css" >
+	</head>
+	<script>
+		function denglu(){
+		    document.biaodan.action="/login";
+		    document.biaodan.submit();
+		}
+		function zhuce() {
+		    document.biaodan.action="/register";
+		    document.biaodan.submit();
+        }
+	</script>
+	<body class="text-center">
+		<form class="form-signin"   method="post" name="biaodan">
+			<img class="mb-4"  src="/images/bootstrap-solid.svg" alt="" width="72" height="72">
+			<h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
+			<label class="sr-only" th:text="#{login.username}">Username</label>
+			<input type="text"  name="username" class="form-control" placeholder="Username" th:placeholder="#{login.username}" required="" autofocus="">
+			<label class="sr-only" th:text="#{login.password}">Password</label>
+			<input type="password" name="password" class="form-control" placeholder="Password" th:placeholder="#{login.password}" required="">
+			<div class="checkbox mb-3">
+				<!--<label>-->
+          			<!--<input type="checkbox" value="remember-me"/> [[#{login.remember}]]-->
+        		<!--</label>-->
+			</div>
+			<p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+			<button class="btn btn-lg btn-primary btn-block gits"  onclick="denglu()" th:text="#{login.btn}">Sign in</button>
+			<button class="btn btn-lg btn-primary btn-block gits" onclick="zhuce()" th:text="#{login.register}">Register</button>
+			<span class="h4 mb-3 font-weight-normal" th:text="#{login.sign}">Sigin in</span>
+			<br>
+
+			<a th:href="@{https://github.com/login/oauth/authorize(client_id='2859958f9f059979ed3a',redirect_uri=${#httpServletRequest.getServletContext().getAttribute('redirectUri')},scope='user',state=1)}">
+				<img class="git" width="50px" height="50px"
+					 src="https://assets.gitlab-static.net/assets/auth_buttons/github_64-84041cd0ea392220da96f0fb9b9473c08485c4924b98c776be1bd33b0daab8c0.png">
+			</a>
+			<p class="mt-5 mb-3 text-muted">© 2019-2020</p>
+			<a class="btn btn-sm" th:href="@{/login(l='zh_CN')}">中文</a>
+			<a class="btn btn-sm" th:href="@{/login(l='en_US')}">English</a>
+		</form>
+	</body>
+</html>

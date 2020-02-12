@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Signin Template for Bootstrap</title>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <!--<link href="/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">-->
+    <!--&lt;!&ndash; Custom styles for this template &ndash;&gt;-->
+    <!--<link href="/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet">-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="/css/bootstrap-theme.css" >
+    <link rel="stylesheet" href="/css/signin.css" >
+    <script>
+        function a1() {
+            $.post({
+                url:"/register1",
+                data: {"username": $("#username").val()},
+                success:function (data) {
+                    if(data.toString()=='chenggong'){
+                        //文字提示
+                        $('#userInfo').css("color","red");
+                        $("#userInfo").html("已经有这个用户了");
+                        //给span添加一个图片
+                        // var oPan=document.getElementById('userInfo');
+                        // var oImg=document.createElement('img');
+                        // oImg.src='https://assets.gitlab-static.net/assets/auth_buttons/github_64-84041cd0ea392220da96f0fb9b9473c08485c4924b98c776be1bd33b0daab8c0.png';
+                        // oPan.appendChild(oImg);
+                    }else{
+                        $('#userInfo').css("color","green");
+                        $("#userInfo").html("用户可用");
+                    }
+                }
+            });
+        }
+        //密码ajax
+        // function a2() {
+        //     $.post({
+        //         url:"/register",
+        //         data: {"password": $("#password").val()},
+        //         success:function (data) {
+        //             if(data.toString()=='chenggong'){
+        //                 console.log("aa");
+        //             }else{
+        //                 console.log("bb");
+        //             }
+        //         }
+        //     });
+        // }
+    </script>
+</head>
+<body class="text-center">
+<form class="form-signin"  action="/register" method="post">
+    <img class="mb-4"  src="/images/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.register}">Please Register</h1>
+    <label class="sr-only" th:text="#{login.username}">Username</label>
+    <input type="text" id="username" onblur="a1()" name="username" class="form-control" placeholder="Username" th:placeholder="#{login.username}" required="" autofocus="">
+    <label class="sr-only" th:text="#{login.password}">Password</label>
+    <input type="password"  id="password"  name="password" class="form-control" placeholder="Password" th:placeholder="#{login.password}" required="">
+
+    <button class="btn btn-lg btn-primary btn-block gits" type="submit" th:text="#{login.register}">Register</button>
+    <!--<p style="color: red" th:text="${sss}" th:if="${not #strings.isEmpty(sss)}"></p>-->
+    <span id="userInfo" ></span>
+    <br>
+</form>
+</body>
+
+</html>
