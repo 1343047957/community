@@ -65,7 +65,7 @@ public class RegisterController {
                 model.addAttribute("sss", "用户已经存在");
                 return "register";
             }else{
-                return "redirect:/login";
+                return "redirect:login";
             }
         }else{
             String msg = "用户的密码或账号不能空";

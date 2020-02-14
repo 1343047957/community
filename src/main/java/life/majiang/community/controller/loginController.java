@@ -27,7 +27,7 @@ public class loginController {
 
     @GetMapping("/login")
     public String login() {
-        return "/login";
+        return "login";
     }
 
     @PostMapping("/login")
@@ -37,7 +37,7 @@ public class loginController {
                          HttpServletResponse response) {
         if(username==""&&password==""){
             model.addAttribute("msg", "输入的密码和账户不能为");
-            return "/login";
+            return "login";
         }
         List<User> yanzhen = userService.yanzhen(username, password);
         if (yanzhen != null) {
@@ -50,6 +50,6 @@ public class loginController {
             }
         }
             model.addAttribute("msg", "输入的密码或账户错误");
-            return "/login";
+            return "login";
     }
 }
