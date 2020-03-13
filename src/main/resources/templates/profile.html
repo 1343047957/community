@@ -32,8 +32,12 @@
                            th:if="${session.user != null && session.user.id == question.creator}">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true">编辑</span>
                         </a>
-                            <a th:href="@{'/questions/'+${question.id}}" class="community-menu"
-                               th:if="${session.user != null && session.user.id == question.creator}">
+                            <a
+                                    th:href="@{'/questions/'+${question.id}}"
+
+                               class="community-menu"
+                               th:if="${session.user != null && session.user.id == question.creator}"
+                            onclick="return deleteTitle()">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true">删除</span>
                         </a>
 
