@@ -44,7 +44,9 @@
 			<br>
 
 			<!--<a th:href="@{https://github.com/login/oauth/authorize(client_id='5f8efbb91d51b742aecd',redirect_uri=${#httpServletRequest.getServletContext().getAttribute('redirectUri')},scope='user',state=1)}">-->
-				<a th:href="@{https://github.com/login/oauth/authorize(client_id='5f8efbb91d51b742aecd',redirect_uri=${#httpServletRequest.getRequestURL()+'callback'},scope='user',state=1)}">
+
+			<!--<a th:href="@{https://github.com/login/oauth/authorize(client_id='5f8efbb91d51b742aecd',redirect_uri=${#httpServletRequest.getRequestURL()+'callback'},scope='user',state=1)}">-->
+				<a th:href="@{https://github.com/login/oauth/authorize(client_id='5f8efbb91d51b742aecd',redirect_uri=${'https://www.yaoshaojie.club/callback'},scope='user',state=1)}">
 
 				<img class="git" width="50px" height="50px"
 					 src="https://assets.gitlab-static.net/assets/auth_buttons/github_64-84041cd0ea392220da96f0fb9b9473c08485c4924b98c776be1bd33b0daab8c0.png">
